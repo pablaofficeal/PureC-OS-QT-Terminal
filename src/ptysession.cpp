@@ -2,7 +2,9 @@
 
 #include <errno.h>
 #include <fcntl.h>
+extern "C" {
 #include <pty.h>
+}
 #include <pwd.h>
 #include <signal.h>
 #include <stdlib.h>
