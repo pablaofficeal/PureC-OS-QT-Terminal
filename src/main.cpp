@@ -122,9 +122,11 @@ int main(int argc, char **argv)
         qputenv("QT_QPA_FONTDIR", "/usr/share/fonts");
     QApplication app(argc, argv);
     QApplication::setApplicationName(QStringLiteral("qt-terminal"));
-    const QDir fonts(QStringLiteral("/usr/share/fonts"));
-    for (const QString &file : fonts.entryList({QStringLiteral("*.ttf")}, QDir::Files))
-        QFontDatabase::addApplicationFont(fonts.filePath(file));
+    for (const QString &dir : {QStringLiteral("/usr/share/qt-terminal/fonts"), QStringLiteral("/usr/share/fonts")}) {
+        const QDir fonts(dir);
+        for (const QString &file : fonts.entryList({QStringLiteral("*.ttf")}, QDir::Files))
+            QFontDatabase::addApplicationFont(fonts.filePath(file));
+    }
     QFont ui(QStringLiteral("DejaVu Sans"));
     ui.setPixelSize(13);
     QApplication::setFont(ui);

@@ -25,7 +25,8 @@ package: all
 	python3 $(ROOT_DIR)/mk/pkg/mkpkg.py --name qt-terminal --version $(VERSION)-$(PKGREL) \
 		--desc "Terminal emulator (Qt, tabs, xterm-256color)" --depend "video-backend>=0.2.0" -o $(OUT) \
 		--file usr/bin/qt-terminal=$(BUILD)/qt-terminal \
-		--file usr/share/applications/qt-terminal.desktop=$(CURDIR)/qt-terminal.desktop
+		--file usr/share/applications/qt-terminal.desktop=$(CURDIR)/qt-terminal.desktop \
+		$(foreach f,DejaVuSans.ttf DejaVuSans-Bold.ttf DejaVuSansMono.ttf DejaVuSansMono-Bold.ttf,--file usr/share/qt-terminal/fonts/$(f)=$(ROOT_DIR)/assets/fonts/$(f))
 	if [ -f "$(SIGN_KEY)" ]; then python3 $(ROOT_DIR)/mk/pkg/pkgsign.py sign $(SIGN_KEY) $(PKG_FILE) $(PKG_FILE).sig; fi
 	@ls -l $(OUT)/qt-terminal-*
 
