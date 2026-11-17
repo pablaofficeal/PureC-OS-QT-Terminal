@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "pty.h"
+#include "ptysession.h"
 #include "vt.h"
 
 #define MARGIN 4
