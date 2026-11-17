@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Terminal
-Exec=/usr/bin/qt-terminal
+Exec=/usr/bin/terminal
 IconColor=0xA6E3A1
 IconText=>_
 Type=Application

@@ -243,7 +243,7 @@ static bool on_key(struct pg_window *win, const struct pg_event *e, void *data)
 int main(int argc, char **argv)
 {
     if (!pg_init(argc, argv)) {
-        fprintf(stderr, "qt-terminal: cannot connect to videod\n");
+        fprintf(stderr, "terminal: cannot connect to videod\n");
         return 1;
     }
     app.hot = app.hot_close = -1;
@@ -256,7 +256,7 @@ int main(int argc, char **argv)
         h = 540;
     app.win = pg_window_new("Terminal", w, h, PG_WINDOW_RESIZABLE);
     if (!app.win) {
-        fprintf(stderr, "qt-terminal: cannot create a window\n");
+        fprintf(stderr, "terminal: cannot create a window\n");
         return 1;
     }
     pg_window_set_min_size(app.win, 20 * cw + 8, 6 * ch + 8);
@@ -271,7 +271,7 @@ int main(int argc, char **argv)
     pg_window_set_child(app.win, root);
     new_tab();
     if (!app.count) {
-        fprintf(stderr, "qt-terminal: cannot start a shell\n");
+        fprintf(stderr, "terminal: cannot start a shell\n");
         return 1;
     }
     int code = pg_run();
